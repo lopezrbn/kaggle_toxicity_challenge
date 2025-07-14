@@ -26,3 +26,6 @@ pandas
 scikit-learn
 scikit-multilearn
 matplotlib
+
+# --- Otros ---
+ipykernel
