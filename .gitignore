@@ -1,6 +1,8 @@
 # Data processed
 data/processed/
 
+predictions.pkl
+
 # Checkpoint files
 checkpoints/
 
