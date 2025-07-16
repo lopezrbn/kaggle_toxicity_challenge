@@ -1,5 +1,5 @@
 # Data processed
-processed_data/
+data/processed/
 
 # Checkpoint files
 checkpoints/
