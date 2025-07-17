@@ -7,16 +7,13 @@ MODEL_BASE = "microsoft/deberta-v3-base"
 MAX_LENGTH_TOKENIZER = 256
 N_FOLDS = 5
 EPOCHS = 3
-# BATCH_SIZE = 32             # Try to use multiples of 8 for maximum GPU efficiency
-# EVAL_STEPS = 500           # Try to use an integer divisor of the total number of steps: total_number_steps = round_up(dataset_n_rows / BATCH_SIZE) * EPOCHS
-# SAVE_STEPS = 500
 BATCH_SIZE = 32             # Try to use multiples of 8 for maximum GPU efficiency
+LEARNING_RATE = 1e-5
 EVAL_STEPS = 250           # Try to use an integer divisor of the total number of steps: total_number_steps = round_up(dataset_n_rows / BATCH_SIZE) * EPOCHS
 SAVE_STEPS = 250
-SAVE_TOTAL_LIMIT = 2
-EARLY_STOP_PATIENCE = 5
-# LOGGING_STEPS = 100
-LOGGING_STEPS = 50
+SAVE_TOTAL_LIMIT = 1
+EARLY_STOP_PATIENCE = 4
+LOGGING_STEPS = 10
 RANDOM_SEED = 31415
 
 
@@ -37,4 +34,3 @@ PATH_DS_TEST_TOKENIZED = os.path.join(PATH_DATA_PROCESSED_DIR, "ds_test_tokenize
 
 PATH_DF_SCORES = os.path.join(PATH_RESULTS, "evaluation", "df_scores.csv")
 PATH_PREDICTIONS_DICT = os.path.join(PATH_RESULTS, "predictions", "predictions.pkl")
-PATH_DF_SUBMISSION = os.path.join(PATH_RESULTS, "submission", "submission.csv")
