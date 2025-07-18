@@ -1,31 +1,26 @@
-# requirements.txt
-# Añade los wheels de PyTorch para la versión CUDA que tengas:
+# ---------- CUDA wheels for PyTorch ----------
 --extra-index-url https://download.pytorch.org/whl/cu118
 
-# --- Núcleo PyTorch con la corrección de la CVE-2025-32434 ---
-torch==2.6.0+cu118
-torchvision==0.21.0+cu118
-torchaudio==2.6.0+cu118
+# --- Core PyTorch build patched for CVE-2025-32434 ---
+torch==2.6.0+cu118           # main deep-learning backend
 
-# --- Ecosistema Hugging Face ---
-transformers[sentencepiece]==4.41.2     # incluye tokenizers y sentencepiece
-tiktoken>=0.6.0                         # acelera la conversión del tokenizador
-# safetensors>=0.6.2                      # carga de pesos segura y rápida
-accelerate>=0.30.0                      # ayuda con device map y FP16
-datasets>=3.8.0                         # utilidades para conjuntos de datos
+# --- Hugging Face stack ---
+transformers[sentencepiece]==4.41.2   # modelling + fast/slow tokenisers
+accelerate>=0.30.0                    # device handling / fp16
+datasets>=3.8.0                       # dataset API
+safetensors>=0.6.2                    # safe & fast model weight loading
+tiktoken>=0.6.0                       # speeds up some tokenisation paths
 
-# --- Compatibilidad NumPy / PyTorch ---
-numpy==1.26.4  # los wheels 2.6.0 se compilan aún contra NumPy 1.x
+# --- Science / numerics ---
+numpy==1.26.4                         # kept at 1.x to match PyTorch wheel
+pandas                                # data wrangling
+scikit-learn                          # metrics, ROC-AUC, etc.
+scikit-multilearn                     # IterativeStratification for multilabel
 
-# --- Utilidades Jupyter / progreso ---
-ipywidgets>=8.1.0        # barra de progreso en notebooks (IProgress)
-tqdm>=4.66.0             # barra de progreso en terminal/notebook
+# --- Visualisation & progress ---
+matplotlib                            # learning-curve plotting
+tqdm>=4.66.0                          # progress bars in terminal / notebook
+ipywidgets>=8.1.0                     # Jupyter front-end for tqdm notebook bars
 
-# --- Utilidades de entrenamiento y evaluación ---
-pandas
-scikit-learn
-scikit-multilearn
-matplotlib
-
-# --- Otros ---
+# --- Notebook kernel (needed when running inside Jupyter) ---
 ipykernel
