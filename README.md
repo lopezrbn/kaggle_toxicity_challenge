@@ -1,6 +1,4 @@
-<p style="text-align: center; font-size: 2em; font-weight: bold;">
-Kaggle Jigsaw Toxicity Challenge - Project Report & Code
-</p>
+<h1 align="center">Kaggle Jigsaw Toxicity Challenge - Project Report & Code</h1>
 
 ## 1 Project overview & key results  
 
