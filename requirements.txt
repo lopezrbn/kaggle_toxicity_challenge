@@ -8,7 +8,7 @@ torch==2.6.0+cu118           # main deep-learning backend
 transformers[sentencepiece]==4.41.2   # modelling + fast/slow tokenisers
 accelerate>=0.30.0                    # device handling / fp16
 datasets>=3.8.0                       # dataset API
-safetensors>=0.6.2                    # safe & fast model weight loading
+safetensors                           # safe & fast model weight loading
 tiktoken>=0.6.0                       # speeds up some tokenisation paths
 
 # --- Science / numerics ---
