@@ -65,9 +65,60 @@ Predictions on the ``Kaggle`` test set confirm the validation findings. All six 
 | identity_hate | 0.9880 |
 | **Mean (official metric)** | **0.9840** |
 
+## 3 Code structure  
 
+The repository follows three simple rules: keep datasets and models version-controlled, keep **all** analysis in notebooks for transparency, and store every artefact in a predictable folder. With this layout a reviewer can follow the full journey—from raw Kaggle CSVs to the final `predictions.csv`—without guessing where files live.
 
+```
+root_dir/
+│
+├─ data/                         # raw and processed datasets
+│   ├─ original/                 # Kaggle CSVs as downloaded
+│   └─ processed/                # Arrow files created with 🤗 Datasets
+│
+├─ model_checkpoints/            # intermediate and final weights
+│   └─ microsoft/
+│       └─ deberta-v3-base/
+│           ├─ run_0/ … run_3/   # separate training runs
+│           │   └─ fold_0/
+│           │       ├─ checkpoint-*/   # last two checkpoints
+│           │       ├─ model_final/    # best model per fold
+│           │       └─ log_history.json
+│           └─ …                      # other folds
+│
+├─ notebooks/                    # narrative analysis
+│   ├─ 1_eda.ipynb
+│   ├─ 2_preprocessing.ipynb
+│   ├─ 3_model_training.ipynb
+│   ├─ 4_model_evaluation.ipynb
+│   └─ 5_inference.ipynb
+│
+├─ results/                      # metrics, plots, predictions
+│   └─ microsoft/
+│       └─ deberta-v3-base/
+│           └─ run_0/ … run_3/   # separate training runs
+│               ├─ evaluation/
+│               │   ├─ folds_scores_roc_auc.csv
+│               │   └─ learning_and_ROC_AUC_curves.png
+│               └─ inference/
+│                   ├─ predictions_logits.npz
+│                   ├─ predictions_scores_roc_auc.csv
+│                   └─ predictions.csv
+│
+├─ .gitignore
+├─ config.py                     # paths & hyper-parameters
+├─ LICENSE
+├─ README.md                     # this document
+└─ requirements.txt              # exact package versions
+```
 
+Everything lives in notebooks, with `config.py` acting as the single source of truth for paths and hyper-parameters. To reproduce the pipeline you only need:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the notebooks in order and all artefacts—checkpoints, logs, plots, predictions—will be rebuilt in the directories shown above, guaranteeing that results are transparent and repeatable.
 
 ## 4. Potential future avenues  
 
