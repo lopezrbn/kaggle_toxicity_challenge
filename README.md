@@ -2,7 +2,7 @@
 
 ## 1 Project overview & key results  
 
-This project addresses the [**Jigsaw Toxic Comment Classification Challenge**](https://www.kaggle.com/competitions/jigsaw-toxic-comment-classification-challenge/overview) on ``Kaggle``, delivered as the technical test for a Data Scientist position at [**Law Business Research**](https://www.lbresearch.com/). The model is evaluated by the mean column-wise ROC-AUC required by the competition.
+This project addresses the [**Jigsaw Toxic Comment Classification Challenge**](https://www.kaggle.com/competitions/jigsaw-toxic-comment-classification-challenge/overview) on ``Kaggle``, although its primary purpose is to showcase my skills as a Data Scientist within this public porftolio. The model is evaluated by the mean column-wise ROC-AUC required by the competition.
 
 The following table summarizes the results obtained for the challenge:
 
